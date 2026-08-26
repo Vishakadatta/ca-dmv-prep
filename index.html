@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Green Light — California DMV Written Test Prep</title>
+<meta name="description" content="Learn California road rules the visual way and ace the DMV written knowledge test. Free practice questions, animated diagrams, and mock tests.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='18' fill='%23006B54'/><circle cx='50' cy='50' r='24' fill='%2352E09A'/></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;600;700;800;900&family=Lora:ital,wght@0,400;0,500;0,600;1,400&family=Overpass+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css?v=1">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="brand" id="btn-home" aria-label="Go to home">
+    <span class="brand-shield" aria-hidden="true">
+      <svg viewBox="0 0 40 40"><rect x="2" y="2" width="36" height="36" rx="8" fill="var(--sign-green)"/><circle cx="20" cy="20" r="9.5" fill="var(--go-green)"/></svg>
+    </span>
+    <span class="brand-name">Green&nbsp;Light</span>
+  </button>
+  <div class="topbar-right">
+    <span class="chip chip-streak" id="chip-streak" title="Daily study streak">🔥 <b id="streak-num">0</b></span>
+    <span class="chip chip-timer" id="chip-timer" title="Study time this session"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 9V5.5M6 1.5h4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg> <b id="timer-text">0:00</b></span>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ============ HOME ============ -->
+  <section class="view" id="view-home">
+    <div class="hero">
+      <div class="guide-sign" role="img" aria-label="Freeway-style guide sign reading: Green Light, California DMV written test">
+        <div class="guide-sign-inner">
+          <span class="guide-eyebrow">EXIT 36 — KNOWLEDGE TEST</span>
+          <h1>Ace the California<br>DMV written test</h1>
+          <p class="guide-sub">Real-style questions · animated road diagrams · 15-minute sessions</p>
+        </div>
+        <div class="guide-arrow" aria-hidden="true">
+          <svg viewBox="0 0 48 48"><path d="M24 6l14 16h-8v20h-12V22h-8z" fill="#fff"/></svg>
+        </div>
+      </div>
+      <p class="hero-note">The real test: <b>36 questions, pass with 30</b> (46 / 38 if you're under 18). Every question here is grounded in the official <i>California Driver's Handbook</i> (DL&nbsp;600, 2025).</p>
+    </div>
+
+    <div class="milestats" id="milestats">
+      <div class="milestat"><b id="stat-streak">0</b><span>day streak</span></div>
+      <div class="milestat"><b id="stat-answered">0</b><span>answered</span></div>
+      <div class="milestat"><b id="stat-accuracy">–</b><span>accuracy</span></div>
+      <div class="milestat"><b id="stat-mastered">0<i>/11</i></b><span>topics strong</span></div>
+    </div>
+
+    <div class="mode-cards">
+      <button class="mode-card mode-practice" id="btn-practice">
+        <span class="mode-kicker">Start here</span>
+        <span class="mode-title">Practice</span>
+        <span class="mode-desc">Jump straight into questions. Every answer — right or wrong — unlocks a clear visual explanation. The app quietly repeats what you miss.</span>
+        <span class="mode-go">Start practicing →</span>
+      </button>
+      <button class="mode-card mode-mock" id="btn-mock">
+        <span class="mode-kicker">Test yourself</span>
+        <span class="mode-title">Mock&nbsp;Test</span>
+        <span class="mode-desc">36 questions, no hints, graded at the end — exactly like the DMV. Miss more than 6 and you'll know what to review.</span>
+        <span class="mode-go">Take the test →</span>
+      </button>
+    </div>
+
+    <section class="topics">
+      <div class="topics-head">
+        <h2>Study by topic</h2>
+        <button class="linklike" id="btn-signs-gallery">Browse all road signs →</button>
+      </div>
+      <div class="topic-grid" id="topic-grid"><!-- filled by app.js --></div>
+    </section>
+
+    <footer class="foot">
+      <p>Free & open source. Not affiliated with the California DMV. Content follows the official <a href="https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/" target="_blank" rel="noopener">California Driver's Handbook</a>.</p>
+    </footer>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="view" id="view-quiz" hidden>
+    <div class="quiz-top">
+      <button class="btn-ghost" id="btn-quit">← End</button>
+      <div class="quiz-progress">
+        <span class="topic-tag" id="quiz-topic-tag"></span>
+        <span class="q-counter mono" id="q-counter"></span>
+      </div>
+      <div class="mock-bar" id="mock-bar" hidden><div class="mock-bar-fill" id="mock-bar-fill"></div></div>
+    </div>
+
+    <article class="qcard" id="qcard">
+      <div class="qmedia" id="qmedia" hidden></div>
+      <h2 class="qtext" id="qtext"></h2>
+      <div class="choices" id="choices"></div>
+    </article>
+
+    <div class="explain" id="explain" hidden>
+      <div class="explain-verdict" id="explain-verdict"></div>
+      <div class="explain-diagram" id="explain-diagram"></div>
+      <p class="explain-text" id="explain-text"></p>
+      <button class="btn-primary" id="btn-next">Next question →</button>
+    </div>
+  </section>
+
+  <!-- ============ RESULTS ============ -->
+  <section class="view" id="view-results" hidden>
+    <div class="result-sign" id="result-sign"></div>
+    <div class="result-detail" id="result-detail"></div>
+    <div class="result-actions">
+      <button class="btn-primary" id="btn-again"></button>
+      <button class="btn-ghost" id="btn-result-home">Back to home</button>
+    </div>
+    <div class="review-list" id="review-list"></div>
+  </section>
+
+  <!-- ============ SIGNS GALLERY ============ -->
+  <section class="view" id="view-signs" hidden>
+    <div class="quiz-top">
+      <button class="btn-ghost" id="btn-signs-back">← Back</button>
+      <h2 class="gallery-title">California road signs</h2>
+    </div>
+    <p class="gallery-intro">Shape and color carry meaning before you can even read the words: <b>red</b> = prohibition, <b>yellow diamond</b> = warning, <b>white rectangle</b> = the law, <b>green</b> = guidance, <b>orange</b> = work zone.</p>
+    <div class="signs-grid" id="signs-grid"></div>
+  </section>
+
+</main>
+
+<!-- 15-minute gentle nudge -->
+<div class="overlay" id="nudge" hidden>
+  <div class="nudge-card">
+    <div class="nudge-art" aria-hidden="true">
+      <svg viewBox="0 0 120 120"><rect x="30" y="8" width="60" height="104" rx="14" fill="#2A2D33"/><circle cx="60" cy="34" r="15" fill="#B3282D" opacity="0.25"/><circle cx="60" cy="60" r="15" fill="#FFC72C" opacity="0.25"/><circle cx="60" cy="86" r="15" fill="#52E09A"/></svg>
+    </div>
+    <h2>That's a solid session.</h2>
+    <p id="nudge-text">You've studied 15 focused minutes today — that's exactly how this is meant to be done. Short daily sessions beat marathon cramming.</p>
+    <div class="nudge-actions">
+      <button class="btn-primary" id="btn-nudge-done">Done for today</button>
+      <button class="btn-ghost" id="btn-nudge-more">Keep going</button>
+    </div>
+  </div>
+</div>
+
+<script src="js/signs.js?v=1"></script>
+<script src="js/diagrams.js?v=1"></script>
+<script src="js/questions.js?v=1"></script>
+<script src="js/app.js?v=1"></script>
+</body>
+</html>
