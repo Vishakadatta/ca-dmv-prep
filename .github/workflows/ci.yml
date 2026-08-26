@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+# Least privilege: this workflow only ever needs to read the code.
+permissions:
+  contents: read
+
+# A newer push makes an in-flight run pointless.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  content:
+    name: Content integrity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '20'
+
+      - name: Check every JS bundle parses
+        run: for f in js/*.js; do node --check "$f" || exit 1; done
+
+      - name: Validate question bank, signs and diagrams
+        run: node scripts/validate-content.mjs
+
+  smoke:
+    name: Browser smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-node@249970729cb0ef3589644e2896645e5dc5ba9c38 # v6
+        with:
+          node-version: '20'
+          cache: npm
+
+      - run: npm ci
+
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Run smoke tests
+        run: npx playwright test
+
+      - name: Upload report on failure
+        if: failure()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7
+
+  links:
+    name: Links & HTML
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@fbc6f3992d24b796d5a048ff273f7fcc4a7b6c09 # v5
+        with:
+          persist-credentials: false
+
+      - name: Every referenced local file exists
+        run: |
+          # src="..."/href="..." pointing at local paths (strip ?v= cache busters)
+          grep -oE '(src|href)="[^"#:]+"' index.html \
+            | sed -E 's/.*="([^"]+)".*/\1/' \
+            | sed -E 's/\?.*$//' \
+            | sort -u > /tmp/refs.txt
+          status=0
+          while read -r f; do
+            [ -z "$f" ] && continue
+            if [ ! -e "$f" ]; then
+              echo "::error::missing local file referenced in index.html: $f"
+              status=1
+            fi
+          done < /tmp/refs.txt
+          echo "checked $(wc -l < /tmp/refs.txt) local reference(s)"
+          exit $status
+
+      - name: Check external links are alive
+        uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2
+        with:
+          args: --no-progress --accept 200,206,429 --exclude-path node_modules -- README.md index.html
+          fail: true

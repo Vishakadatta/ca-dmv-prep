@@ -1,0 +1,14 @@
+{
+  "name": "ca-dmv-prep",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Quiz-first prep for the California DMV written test",
+  "scripts": {
+    "validate": "node scripts/validate-content.mjs",
+    "test": "playwright test",
+    "serve": "python3 -m http.server 8000"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0"
+  }
+}
