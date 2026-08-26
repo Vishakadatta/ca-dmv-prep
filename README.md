@@ -71,6 +71,10 @@ first time you load the newer version; nothing is lost.
 Not affiliated with or endorsed by the California DMV. Study material only — always confirm
 current rules against the official handbook.
 
+## Credits
+
+Designed and built by **Vishakadatta** and **Shrinidhi Hebbar**.
+
 ## License
 
 MIT

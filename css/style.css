@@ -412,3 +412,11 @@ a{color:var(--sign-green)}
   .save-row{flex-wrap:wrap}
   .save-row .btn-primary{width:100%}
 }
+
+/* ---------- credit ---------- */
+.foot .credit{
+  font-family:var(--display);font-weight:700;
+  font-size:.92rem;color:var(--ink-soft);
+  margin-bottom:6px;
+}
+.foot .credit b{color:var(--sign-green);font-weight:800}
