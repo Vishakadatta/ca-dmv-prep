@@ -73,6 +73,17 @@ first time you load the newer version; nothing is lost.
 Not affiliated with or endorsed by the California DMV. Study material only — always confirm
 current rules against the official handbook.
 
+## Typography
+
+Set in **Overpass** (Red Hat, SIL Open Font License) — an open typeface drawn from
+**FHWA Series / Highway Gothic**, the font actually used on California road signs.
+
+It is *not* Clearview. Clearview is the Penn State–co-developed highway typeface, and it's
+a commercial licence (~$500 single-computer, ~$800 for the family, web embedding extra).
+It also only ever held *interim* FHWA approval — granted 2004, rescinded 2016, reinstated
+2018 — and only for positive-contrast guide signs, never for STOP signs or white regulatory
+signs. Overpass is the free, correctly-licensed way to get the real sign look.
+
 ## Credits
 
 Designed and built by **Vishakadatta** and **Shrinidhi Hebbar**.
