@@ -1,12 +1,17 @@
 version: 2
 updates:
   # Keep the pinned action SHAs current (and patched).
+  # Grouped into a single PR: codeql-action/init and codeql-action/analyze must
+  # always move together, or the analyze step fails on a version mismatch.
   - package-ecosystem: github-actions
     directory: /
     schedule:
       interval: weekly
     commit-message:
       prefix: "ci"
+    groups:
+      actions:
+        patterns: ["*"]
 
   - package-ecosystem: npm
     directory: /
