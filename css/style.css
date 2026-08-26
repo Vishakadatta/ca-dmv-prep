@@ -327,3 +327,88 @@ a{color:var(--sign-green)}
   .guide-sign-inner{padding-right:20px}
   .guide-arrow{display:none}
 }
+
+/* ---------- who's studying ---------- */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+
+.chip-who{cursor:pointer;gap:7px;padding:3px 12px 3px 4px}
+.chip-who:hover{border-color:var(--ink)}
+.who-dot{
+  width:21px;height:21px;border-radius:50%;
+  background:var(--sign-green);color:#fff;
+  font-family:var(--display);font-weight:800;font-size:.72rem;
+  display:grid;place-items:center;flex:0 0 auto;
+}
+.who-dot-empty{background:var(--line);color:var(--ink-soft)}
+
+.greeting{
+  font-size:1rem;color:var(--ink-soft);
+  margin:-8px 0 18px;
+}
+.greeting b{color:var(--sign-green)}
+
+/* people sheet */
+.people-card{
+  background:var(--card);border-radius:18px;box-shadow:var(--shadow);
+  max-width:420px;width:100%;padding:26px 24px 20px;
+  animation:card-in .3s cubic-bezier(.2,.8,.25,1) both;
+}
+.people-card h2{font-family:var(--display);font-weight:900;font-size:1.35rem}
+.people-sub{color:var(--muted);font-size:.9rem;margin:6px 0 16px}
+.people-list{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;max-height:46vh;overflow-y:auto}
+.person{display:flex;align-items:center;gap:6px}
+.person-pick{
+  flex:1;display:flex;align-items:center;gap:11px;text-align:left;
+  border:1.5px solid var(--line);border-radius:11px;background:var(--card);
+  padding:10px 12px;transition:border-color .15s ease;
+}
+.person-pick:hover{border-color:var(--sign-green)}
+.person.is-active .person-pick{border-color:var(--sign-green);background:var(--go-green-soft)}
+.person-meta{flex:1;min-width:0}
+.person-name{display:block;font-family:var(--display);font-weight:700;font-size:.94rem;line-height:1.25}
+.person-sub{display:block;font-family:var(--mono);font-size:.72rem;color:var(--muted)}
+.person-tick{color:var(--sign-green);font-weight:800}
+.person-del{
+  width:30px;height:30px;border-radius:8px;color:var(--muted);
+  font-size:1.2rem;line-height:1;flex:0 0 auto;
+}
+.person-del:hover{background:var(--stop-red-soft);color:var(--stop-red)}
+
+.new-person{display:flex;gap:8px;margin-bottom:12px}
+.new-person input,.save-row input{
+  flex:1;min-width:0;font-family:var(--body);font-size:.95rem;
+  border:1.5px solid var(--line);border-radius:11px;padding:11px 13px;
+  background:var(--paper);color:var(--ink);
+}
+.new-person input:focus,.save-row input:focus{outline:none;border-color:var(--sign-green)}
+.new-person .btn-primary,.save-row .btn-primary{margin-top:0;padding:11px 20px;font-size:.94rem}
+#people-close{width:100%}
+
+/* save-progress card on the results screen */
+.save-card{
+  background:var(--go-green-soft);border:2px solid var(--go-green);
+  border-radius:var(--r);padding:20px 22px;margin-bottom:20px;
+  animation:card-in .35s cubic-bezier(.2,.8,.25,1) both;
+}
+.save-card h3{font-family:var(--display);font-weight:800;font-size:1.1rem;margin-bottom:6px}
+.save-card p{font-size:.93rem;color:var(--ink-soft);margin-bottom:14px;max-width:52ch}
+.save-row{display:flex;gap:8px;margin-bottom:8px}
+.save-skip{font-size:.86rem;color:var(--muted)}
+.save-done{
+  background:var(--go-green-soft);border:2px solid var(--go-green);
+  border-radius:var(--r);padding:16px 20px;margin-bottom:20px;font-size:.96rem;
+}
+
+@media (max-width:640px){
+  /* Three chips plus the wordmark won't fit at 375px. The streak already has a
+     prominent tile on the home screen, so drop the duplicate chip here. */
+  .chip-streak{display:none}
+  .topbar{gap:8px}
+  .topbar-right{min-width:0}
+  .chip{padding:4px 10px;font-size:.76rem}
+  .chip-who{padding:3px 10px 3px 4px}
+  .chip-who b{max-width:64px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .brand-name{max-width:96px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .save-row{flex-wrap:wrap}
+  .save-row .btn-primary{width:100%}
+}

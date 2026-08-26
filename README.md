@@ -19,7 +19,10 @@ Built for people who are confident drivers elsewhere but new to California road 
   You can always keep going.
 - **Spaced repetition.** Questions you miss come back more often; ones you've mastered fade out.
 - **Per-topic progress**, daily streak, and accuracy — all stored locally in your browser.
-  No account, no tracking, no server.
+- **Local profiles.** Several people can share one laptop and each keeps their own streak
+  and their own missed questions. It asks for a first name only after your first session —
+  never before — and there are no accounts, no email, no password, and no server. Nothing
+  ever leaves the device.
 
 ## Running it locally
 
@@ -52,6 +55,16 @@ add("topic-key", "Question text?", ["correct answer", "wrong", "wrong", "wrong"]
 The correct answer is always written first (index `0`); the app shuffles the choices at
 runtime. `sign` pulls a road sign from `js/signs.js`, `dia` pulls an animated diagram from
 `js/diagrams.js` — both are optional.
+
+## Where your progress lives
+
+In `localStorage` on your own device, under the key `greenlight.v2`, and nowhere else.
+There is no backend to sync to — this is a static site, so there is literally nowhere for
+the data to go. Clearing your browser data clears your progress, and switching devices
+starts you fresh.
+
+Progress saved before profiles existed (`greenlight.v1`) is migrated automatically the
+first time you load the newer version; nothing is lost.
 
 ## Disclaimer
 

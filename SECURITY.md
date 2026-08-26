@@ -4,6 +4,12 @@ Green Light is a static website. There is no backend, no database, no user accou
 and no analytics. Your progress (streak, accuracy, which questions you've missed) is
 stored only in your own browser's `localStorage` and never leaves your device.
 
+Profiles are a local convenience so several people can share one browser. A profile is
+just a first name the user typed; there is no email, no password, no verification, and
+no server-side record. Anyone with physical access to the device can switch between the
+profiles on it — that is by design, and the reason no sensitive data is collected.
+Profile names are escaped before rendering, so a name cannot inject markup.
+
 ## Reporting a vulnerability
 
 Please **do not open a public issue** for a security problem.

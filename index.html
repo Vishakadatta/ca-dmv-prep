@@ -35,6 +35,7 @@
     <span class="brand-name">Green&nbsp;Light</span>
   </button>
   <div class="topbar-right">
+    <button class="chip chip-who" id="chip-who" aria-haspopup="dialog"></button>
     <span class="chip chip-streak" id="chip-streak" title="Daily study streak">🔥 <b id="streak-num">0</b></span>
     <span class="chip chip-timer" id="chip-timer" title="Study time this session"><svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><circle cx="8" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="1.6"/><path d="M8 9V5.5M6 1.5h4" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg> <b id="timer-text">0:00</b></span>
   </div>
@@ -57,6 +58,8 @@
       </div>
       <p class="hero-note">The real test: <b>36 questions, pass with 30</b> (46 / 38 if you're under 18). Every question here is grounded in the official <i>California Driver's Handbook</i> (DL&nbsp;600, 2025).</p>
     </div>
+
+    <p class="greeting" id="greeting" hidden></p>
 
     <div class="milestats" id="milestats">
       <div class="milestat"><b id="stat-streak">0</b><span>day streak</span></div>
@@ -126,6 +129,7 @@
       <button class="btn-primary" id="btn-again"></button>
       <button class="btn-ghost" id="btn-result-home">Back to home</button>
     </div>
+    <div id="save-slot"></div>
     <div class="review-list" id="review-list"></div>
   </section>
 
@@ -140,6 +144,21 @@
   </section>
 
 </main>
+
+<!-- who's studying -->
+<div class="overlay" id="people" hidden role="dialog" aria-modal="true" aria-labelledby="people-title">
+  <div class="people-card">
+    <h2 id="people-title">Who's studying?</h2>
+    <p class="people-sub">Everyone on this device keeps their own streak and their own missed questions.</p>
+    <div class="people-list" id="people-list"></div>
+    <form class="new-person" id="new-person">
+      <label class="sr-only" for="new-name">Name</label>
+      <input id="new-name" type="text" placeholder="Add someone else" maxlength="24" autocomplete="off">
+      <button class="btn-primary" type="submit">Add</button>
+    </form>
+    <button class="btn-ghost" id="people-close" type="button">Close</button>
+  </div>
+</div>
 
 <!-- 15-minute gentle nudge -->
 <div class="overlay" id="nudge" hidden>

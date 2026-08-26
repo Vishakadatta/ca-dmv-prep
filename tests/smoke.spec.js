@@ -103,3 +103,96 @@ test("no horizontal overflow on a phone", async ({ page }) => {
     document.documentElement.scrollWidth > window.innerWidth);
   expect(overflow).toBe(false);
 });
+
+// ---------- local profiles ----------
+
+test("progress saved before profiles existed is migrated, not lost", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem("greenlight.v1", JSON.stringify({
+      seen: { 3: { right: 2, wrong: 0 } }, streak: 4,
+      lastDay: new Date().toISOString().slice(0, 10),
+      answered: 88, correct: 57, topics: { signs: { n: 20, c: 13 } },
+    }));
+  });
+  await page.reload();
+  await expect(page.locator("#stat-answered")).toHaveText("88");
+  await expect(page.locator("#stat-streak")).toHaveText("4");
+  const profile = await page.evaluate(() => {
+    const db = JSON.parse(localStorage.getItem("greenlight.v2"));
+    return Object.values(db.profiles)[0];
+  });
+  expect(profile.answered).toBe(88);
+  expect(profile.name).toBeNull();          // unnamed until they choose to save
+});
+
+test("the name prompt appears only after a session, never before", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => localStorage.clear());
+  await page.reload();
+
+  // nothing blocks the first question
+  await expect(page.locator("#save-form")).toHaveCount(0);
+  await page.click("#btn-practice");
+  await expect(page.locator("#save-form")).toHaveCount(0);
+
+  for (let i = 0; i < 12; i++) {
+    await page.locator(".choice:not([disabled])").first().click();
+    const next = page.locator("#btn-next");
+    if (await next.isVisible()) await next.click();
+  }
+  await expect(page.locator("#view-results")).toBeVisible();
+  await expect(page.locator("#save-form")).toBeVisible();
+
+  await page.fill("#save-name", "Vishaka");
+  await page.click("#save-form button[type=submit]");
+  await expect(page.locator(".save-done")).toContainText("Vishaka");
+  await expect(page.locator("#chip-who")).toContainText("Vishaka");
+});
+
+test("two people on one device keep separate progress", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => {
+    localStorage.clear();
+    localStorage.setItem("greenlight.v1", JSON.stringify({
+      seen: {}, streak: 3, lastDay: new Date().toISOString().slice(0, 10),
+      answered: 50, correct: 40, topics: {},
+    }));
+  });
+  await page.reload();
+  await page.evaluate(() => {
+    document.querySelector("#save-slot").innerHTML = "";
+    window.localStorage; // no-op
+  });
+  // name the migrated profile, then add a second person
+  await page.click("#chip-who");
+  await page.fill("#new-name", "Arjun");
+  await page.click("#new-person button[type=submit]");
+
+  await expect(page.locator("#chip-who")).toContainText("Arjun");
+  await expect(page.locator("#stat-answered")).toHaveText("0");   // fresh start
+
+  const profiles = await page.evaluate(() => {
+    const db = JSON.parse(localStorage.getItem("greenlight.v2"));
+    return Object.values(db.profiles).map(p => ({ name: p.name, answered: p.answered }));
+  });
+  expect(profiles).toHaveLength(2);
+  expect(profiles.find(p => p.name === "Arjun").answered).toBe(0);
+  expect(profiles.find(p => p.name === null).answered).toBe(50); // untouched
+});
+
+test("a name containing HTML is escaped, not executed", async ({ page }) => {
+  await page.goto("/");
+  await page.evaluate(() => {
+    localStorage.clear();
+    const p = { id: "px", name: "<img src=x onerror=alert(1)>", created: "2026-01-01",
+                seen: {}, streak: 1, lastDay: null, answered: 5, correct: 3, topics: {} };
+    localStorage.setItem("greenlight.v2", JSON.stringify({ v: 2, activeId: "px", profiles: { px: p } }));
+  });
+  await page.reload();
+  await page.click("#chip-who");
+  // no element was injected anywhere the name is rendered
+  expect(await page.locator("#chip-who img, .person img, #greeting img").count()).toBe(0);
+  await expect(page.locator("#chip-who b")).toHaveText("<img src=x onerror=alert(1)>");
+});
