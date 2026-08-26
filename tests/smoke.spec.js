@@ -19,7 +19,7 @@ test("home page loads with all content wired up", async ({ page }) => {
     q: window.QUESTIONS.length, t: window.TOPICS.length,
     s: Object.keys(window.SIGNS).length, d: Object.keys(window.DIAGRAMS).length,
   }));
-  expect(counts.q).toBeGreaterThanOrEqual(36);
+  expect(counts.q).toBeGreaterThanOrEqual(46);
   expect(counts.t).toBeGreaterThan(0);
   expect(counts.s).toBeGreaterThan(0);
   expect(counts.d).toBeGreaterThan(0);
@@ -65,18 +65,24 @@ test("choice order is shuffled, not always first", async ({ page }) => {
   expect(positions.length).toBeGreaterThan(1);
 });
 
-test("mock test runs 36 questions and grades against the DMV pass mark", async ({ page }) => {
+test("mock test runs 46 questions and grades against the DMV pass mark", async ({ page }) => {
   test.setTimeout(120_000);
   await page.goto("/");
   await page.click("#btn-mock");
   await expect(page.locator("#mock-bar")).toBeVisible();
 
-  for (let i = 0; i < 36; i++) {
+  for (let i = 0; i < 46; i++) {
     await expect(page.locator(".choice:not([disabled])").first()).toBeVisible();
     // answer correctly every time -> must pass
     await page.evaluate(() => {
+      // Identify by question text AND choices: some questions share an identical
+      // option set (e.g. two speed-limit questions both offering 15/20/25/30 mph)
+      // with different correct answers, so choices alone are not a unique key.
+      const stem  = document.querySelector("#qtext").textContent;
       const texts = [...document.querySelectorAll(".choice")].map(b => b.textContent.slice(1));
-      const q = window.QUESTIONS.find(x => x.c.length === texts.length && x.c.every(c => texts.includes(c)));
+      const q = window.QUESTIONS.find(x =>
+        x.q === stem && x.c.length === texts.length && x.c.every(c => texts.includes(c)));
+      if (!q) throw new Error("could not identify question: " + stem);
       [...document.querySelectorAll(".choice")].find(b => b.textContent.slice(1) === q.c[q.a]).click();
     });
     // no teaching may leak during a mock test
@@ -85,7 +91,7 @@ test("mock test runs 36 questions and grades against the DMV pass mark", async (
 
   await expect(page.locator("#view-results")).toBeVisible();
   await expect(page.locator(".result-sign")).toHaveClass(/pass/);
-  await expect(page.locator(".result-sign .score")).toContainText("36 / 36");
+  await expect(page.locator(".result-sign .score")).toContainText("46 / 46");
 });
 
 test("signs gallery renders every sign with its meaning", async ({ page }) => {

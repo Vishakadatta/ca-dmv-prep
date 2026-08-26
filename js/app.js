@@ -4,7 +4,7 @@
 const $ = s => document.querySelector(s);
 const esc = t => String(t).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 const QS = window.QUESTIONS, TOPICS = window.TOPICS, SIGNS = window.SIGNS, DIA = window.DIAGRAMS;
-const MOCK_LEN = 36, MOCK_PASS = 30, SESSION_MS = 15*60*1000;
+const MOCK_LEN = 46, MOCK_PASS = 38, SESSION_MS = 15*60*1000;
 
 /* ---------- profiles + persistence ----------
    Several people can share one browser. Each keeps their own progress.

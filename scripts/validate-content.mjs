@@ -40,6 +40,16 @@ Q.forEach((q, i) => {
   if (q.dia && !D[q.dia])                    fail(`${at}: references missing diagram "${q.dia}"`);
 });
 
+/* ---- a question must be uniquely identifiable by stem + choices ---- */
+{
+  const seen = new Map();
+  Q.forEach((q, i) => {
+    const k = q.q + "|" + [...q.c].sort().join("||");
+    if (seen.has(k)) fail(`question[${i}] is an exact duplicate of question[${seen.get(k)}]`);
+    else seen.set(k, i);
+  });
+}
+
 /* ---- every topic must be answerable ---- */
 for (const t of T) {
   const n = Q.filter(q => q.t === t.k).length;
@@ -48,7 +58,7 @@ for (const t of T) {
 }
 
 /* ---- a mock test must be fillable ---- */
-if (Q.length < 36) fail(`only ${Q.length} questions; a 36-question mock test cannot be built`);
+if (Q.length < 46) fail(`only ${Q.length} questions; a 46-question mock test cannot be built`);
 
 /* ---- signs ---- */
 for (const [k, s] of Object.entries(S)) {

@@ -14,7 +14,9 @@ Built for people who are confident drivers elsewhere but new to California road 
   [California Driver's Handbook (DL 600)](https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/).
 - **12 animated SVG road diagrams** — four-way stops, unprotected left turns, which lane to
   land in, roundabouts, hill parking, school buses, freeway merging, the three-second rule.
-- **Mock test mode** — 36 questions, no hints, graded at the end. Pass mark is 30, same as the DMV.
+- **Mock test mode** — 46 questions, no hints, graded at the end. Pass mark is 38, same as the DMV.
+  (The DMV publishes 80% as the passing score; it no longer publishes a question count itself,
+  so 46/38 follows what current CA test-prep sources report.)
 - **15-minute sessions.** A gentle prompt appears at 15 minutes so you stop before you burn out.
   You can always keep going.
 - **Spaced repetition.** Questions you miss come back more often; ones you've mastered fade out.
