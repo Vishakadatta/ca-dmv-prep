@@ -10,7 +10,7 @@ Built for people who are confident drivers elsewhere but new to California road 
 
 ## What's in it
 
-- **177 questions** across 11 topics, grounded in the official
+- **201 questions** across 11 topics, grounded in the official
   [California Driver's Handbook (DL 600)](https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/).
 - **12 animated SVG road diagrams** — four-way stops, unprotected left turns, which lane to
   land in, roundabouts, hill parking, school buses, freeway merging, the three-second rule.

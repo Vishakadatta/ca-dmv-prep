@@ -324,7 +324,7 @@ add("alcohol","Prescription or over-the-counter medication can:",["Impair drivin
 "<b>DUI covers any impairing substance</b>, prescribed or not. Antihistamines, sleep aids, and painkillers are common culprits — read the label and check for drowsiness warnings.");
 
 add("alcohol","A first DUI conviction in California can result in:",["Jail time, fines, a license suspension, and an ignition interlock device","A warning only","Only a fine","Points on your record with no suspension"],0,
-"A first offence brings <b>fines and penalty assessments running into thousands of dollars</b>, up to six months in jail, DUI school, a suspension, and an ignition interlock requirement.");
+"A first offense brings <b>fines and penalty assessments running into thousands of dollars</b>, up to six months in jail, DUI school, a suspension, and an ignition interlock requirement.");
 
 add("alcohol","Driving under 21 with alcohol in the vehicle (even unopened) is:",["Illegal unless it is in the trunk and you are accompanied by a parent or guardian, or you are working","Always legal if unopened","Legal if a passenger owns it","Legal in the back seat"],0,
 "Under 21, carrying alcohol at all is prohibited with narrow exceptions — <b>in the trunk with a parent, guardian, or responsible adult present</b>, or in the course of employment.");
@@ -382,14 +382,14 @@ add("law","A police officer signals you to pull over. You should:",["Signal, pul
 add("law","When you are stopped by an officer, you must present:",["Your driver license, vehicle registration, and proof of insurance","Only your driver license","Only your registration","Your passport and license"],0,
 "All three: <b>license, registration, and evidence of financial responsibility</b>. Keep the paperwork somewhere you can reach without an alarming search.");
 
-add("law","Driving with a suspended license is:",["A serious offence that can lead to a fine, jail, and vehicle impoundment","A minor infraction","Allowed for commuting to work","Allowed if you have insurance"],0,
+add("law","Driving with a suspended license is:",["A serious offense that can lead to a fine, jail, and vehicle impoundment","A minor infraction","Allowed for commuting to work","Allowed if you have insurance"],0,
 "It is a <b>misdemeanour</b>, and your car can be impounded on the spot. If your license is suspended, do not drive at all until it is reinstated in writing.");
 
-add("law","Street racing or a speed contest on a public road can result in:",["License suspension, vehicle impoundment, and criminal charges","A fine only","A warning for a first offence","Points but no suspension"],0,
+add("law","Street racing or a speed contest on a public road can result in:",["License suspension, vehicle impoundment, and criminal charges","A fine only","A warning for a first offense","Points but no suspension"],0,
 "Speed contests bring <b>up to 90 days in jail, fines, a 30-day impound, and a suspension</b> — and far more if anyone is injured.");
 
 add("law","Littering from your vehicle is:",["Illegal, with a fine and possible community service","A civil matter only","Allowed for organic waste","Only illegal on freeways"],0,
-"Throwing anything from a vehicle — including a cigarette — carries a <b>fine of $1,000 or more</b> plus mandatory litter cleanup for repeat offences.");
+"Throwing anything from a vehicle — including a cigarette — carries a <b>fine of $1,000 or more</b> plus mandatory litter cleanup for repeat offenses.");
 
 add("law","If your license is lost or stolen, you should:",["Apply for a duplicate at the DMV","Drive with a photocopy","Wait until renewal","Report it only to the police"],0,
 "Apply for a <b>duplicate license</b>. A photocopy is not a valid license, and driving without one in your possession is itself a violation.");
@@ -564,6 +564,80 @@ add("freeway","When merging onto a freeway, the gap in traffic you need is rough
 
 add("law","The DMV may require a driver to be reexamined because of:",["A physical or mental condition or a poor driving record — never age alone","Reaching the age of 70","Owning more than one vehicle","Holding an out-of-state license"],0,
 "Age by itself is never grounds for reexamination, and <b>there are no senior-specific license restrictions</b> — restrictions are based on conditions, not age. A physician, officer, or family member can request a reexamination.");
+
+/* ============ COVERAGE ROUND 2: verified against DL 600 section by section ============ */
+
+add("safe","How far ahead should you scan the road while driving?",["At least 10 seconds ahead","About 2 seconds ahead","To the end of your headlights only","Just past the car in front"],0,
+"Scan <b>at least 10 seconds ahead</b> — roughly a block in town, a quarter-mile on the highway. Looking only at the car in front leaves you no time to react to what caused it to brake.");
+
+add("weather","On a wet road, you should reduce your speed by about:",["5 to 10 mph","1 to 2 mph","Half","Three-quarters"],0,
+"The handbook's guide: <b>wet — slow by 5 to 10 mph; packed snow — cut your speed in half; ice — no faster than 5 mph</b>.");
+
+add("weather","On packed snow you should reduce your speed to about:",["Half your normal speed","Three-quarters of normal","10 mph below the limit","The posted limit is fine"],0,
+"<b>Halve your speed</b> on packed snow. On ice, slow to <b>no more than 5 mph</b>. The posted limit never applies when conditions are poor — the basic speed law does.");
+
+add("weather","In a heavy storm where you cannot see more than 100 feet, you should not drive faster than:",["30 mph","45 mph","55 mph","15 mph"],0,
+"If visibility drops below <b>100 feet</b>, your maximum is <b>30 mph</b> — and only if you can still stop within what you can see. If it gets worse, pull completely off the road.");
+
+add("safe","You should sit at least how far back from the steering wheel airbag?",["10 inches","4 inches","20 inches","As close as is comfortable"],0,
+"Allow <b>10 inches</b> between your breastbone and the center of the steering wheel, so long as you can still fully control the car. An airbag deploys fast enough to injure someone sitting on top of it.");
+
+add("safe","A child in a rear-facing child seat may never ride:",["In the front seat of a vehicle with a passenger airbag","In the back seat","In a vehicle with more than two doors","In a vehicle without side airbags"],0,
+"A deploying passenger airbag strikes a rear-facing seat exactly where the child's head is. Children must ride <b>rear-facing until age 2</b>, unless they are 40 lb or 3'4\" — and never in front of a live airbag.");
+
+add("law","Wearing headphones or earplugs while driving is:",["Illegal if they cover or are in both ears","Always legal","Legal below 35 mph","Legal for passengers only, never the driver"],0,
+"You may not wear a headset or earplugs <b>in both ears</b> while driving — you need to hear sirens, horns, and the sound of your own vehicle. One ear is permitted; hearing aids are exempt.");
+
+add("safe","On a narrow mountain road where you cannot see at least 200 feet ahead, you should:",["Sound your horn to warn oncoming drivers","Flash your high beams only","Speed up through the blind section","Drive in the center of the road"],0,
+"<b>Tap the horn</b> on a blind mountain curve where you cannot see 200 feet. It is one of the few times the handbook actively tells you to use it.");
+
+add("safe","You must turn on your headlights when it is too dark to see a person or vehicle at:",["1,000 feet","200 feet","500 feet","100 feet"],0,
+"Headlights go on when you cannot see clearly for <b>1,000 feet</b>, from 30 minutes after sunset to 30 minutes before sunrise, and whenever weather has your wipers running.");
+
+add("law","Driving at night with only your parking lights on is:",["Illegal — you must use headlights","Legal on well-lit streets","Legal below 25 mph","Legal if your headlights are broken"],0,
+"<b>Parking lights are not driving lights.</b> They make you look far away and are illegal to drive on. If a headlight fails, get it replaced before driving at night.");
+
+add("law","Smoking in a vehicle when a minor is present is:",["Illegal, and carries a fine","Legal with a window open","Legal if the minor is over 12","Legal outside school zones"],0,
+"It is illegal to smoke — tobacco or cannabis, including vaping — in a vehicle with <b>anyone under 18</b> aboard, moving or parked, windows open or not.");
+
+add("law","Riding in the bed of a pickup truck is:",["Illegal unless it has secure seats and seat belts","Legal for adults","Legal below 25 mph","Legal on surface streets but not freeways"],0,
+"Passengers may not ride in a truck bed unless it is fitted with <b>secure seats and seat belts</b>. Animals carried in a truck bed must be secured too.");
+
+add("law","A video monitor visible to the driver while driving is:",["Illegal, except for vehicle information, navigation, or media controls","Always legal","Legal if the vehicle is stopped at a light","Legal for passengers to watch"],0,
+"No screen playing video may be <b>visible to the driver</b>. Navigation, vehicle information, and media/radio displays are the exceptions.");
+
+add("parking","You may not park within how many feet of a crosswalk, marked or unmarked?",["20 feet","5 feet","40 feet","10 feet"],0,
+"Keep <b>20 feet</b> clear of a crosswalk (15 feet where there is a curb extension) so drivers can see people stepping out. Also keep <b>15 feet</b> from a fire hydrant or fire station driveway.");
+
+add("parking","Parking is prohibited within three feet of:",["A sidewalk access ramp for people with disabilities","A mailbox","A bus stop sign","A street tree"],0,
+"Never block a <b>disabled-access ramp</b>, the curb giving wheelchair access, or the crosshatched area beside a disabled parking space — that hatching is the space someone needs to deploy a ramp.");
+
+add("parking","A vehicle left standing on a freeway may be removed after:",["Four hours","30 minutes","24 hours","One hour"],0,
+"A vehicle stopped or parked on a freeway for more than <b>four hours</b> may be towed. If you break down, get fully off the pavement and stay inside with the doors locked until help arrives.");
+
+add("parking","A parking space marked for zero-emission vehicles may be used by:",["Only a zero-emission vehicle","Any vehicle displaying a carpool decal","Any vehicle for up to 20 minutes","Any hybrid vehicle"],0,
+"A <b>zero-emission vehicle space</b> is only for a zero-emission vehicle. Parking another car there is treated like any other reserved-space violation.");
+
+add("law","Traffic violator school may be used:",["Once in any 18-month period, for a one-point violation","Any number of times","Once per calendar year for any violation","Only for parking tickets"],0,
+"The judge may offer traffic school for a <b>one-point</b> violation, usable <b>once per 18 months</b>. It keeps the citation off your insurance report, but it still appears on your driving record.");
+
+add("law","A provisional license holder with two at-fault collisions or convictions may not drive for 30 days unless accompanied by:",["A licensed driver aged 25 or older","Any licensed adult","A parent only","A driving instructor only"],0,
+"Two at-fault collisions or convictions brings a <b>30-day restriction</b> requiring a licensed driver 25 or older. Three brings a six-month suspension followed by a year of probation — and turning 18 does not cancel any of it.");
+
+add("alcohol","After a DUI arrest, you may request a DMV administrative hearing within:",["10 days of being served","60 days","30 days","24 hours"],0,
+"You have <b>10 days</b> to request a hearing (14 from a mailing date). The officer can take your license and issue a temporary one valid for 30 days. Miss the window and the suspension stands.");
+
+add("alcohol","A DUI conviction stays on your California driving record for:",["10 years","3 years","5 years","2 years"],0,
+"<b>10 years.</b> That record affects insurance, employment, and the penalties for any later offense — a second DUI within that window is treated far more harshly.");
+
+add("law","If you are in a collision while uninsured, your driving privilege can be suspended for up to:",["Four years","30 days","One year","Six months"],0,
+"Up to <b>four years</b>, and fault makes no difference. You may get the license back for the final three years by filing an <b>SR 22/SR 1P</b> and keeping it current.");
+
+add("law","If someone is injured or killed in a collision, a report must be made to law enforcement within:",["24 hours","10 days","72 hours","30 days"],0,
+"Law enforcement must be notified within <b>24 hours</b> of an injury or death. Separately, you must file an <b>SR 1 with the DMV within 10 days</b> for any injury, death, or over $1,000 damage — including on private property, and whoever was at fault.");
+
+add("share","You have struck an animal in the roadway. You should:",["Call the humane society or law enforcement, and not move the injured animal","Move it to the roadside yourself","Leave the scene if the animal is not a pet","Only report it if it was a domestic animal"],0,
+"Call the nearest <b>humane society or law enforcement</b> and <b>do not move the animal</b> — a frightened, injured animal will bite, and moving it can worsen its injuries. Abandoning an animal on a highway carries a fine of up to $1,000.");
 
 window.TOPICS = TOPICS;
 window.QUESTIONS = Q;

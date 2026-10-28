@@ -36,6 +36,8 @@ All three are in scope and worth reporting.
 | Workflows run with read-only `GITHUB_TOKEN` by default | `permissions:` blocks |
 | `persist-credentials: false` on every checkout | `.github/workflows/` |
 | CodeQL scanning on push, PR, and weekly | `.github/workflows/codeql.yml` |
+| Clickjacking guard — GitHub Pages cannot send X-Frame-Options, and `frame-ancestors` is ignored in a meta CSP | `js/guard.js` |
+| CSP enforcement covered by tests, so a weakened policy fails CI | `tests/csp.spec.js` |
 | Dependabot updates for Actions and npm | `.github/dependabot.yml` |
 | Secret scanning with push protection | repository settings |
 
