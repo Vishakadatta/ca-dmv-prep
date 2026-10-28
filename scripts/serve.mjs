@@ -3,7 +3,7 @@
    does not under several Playwright workers. No dependencies.
    Usage: node scripts/serve.mjs [port]                                      */
 import { createServer } from "node:http";
-import { readFile, stat } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { dirname, join, normalize, extname, sep } from "node:path";
 
@@ -31,11 +31,24 @@ const server = createServer(async (req, res) => {
       return;
     }
 
-    let info = await stat(file).catch(() => null);
-    if (info?.isDirectory()) { file = join(file, "index.html"); info = await stat(file).catch(() => null); }
-    if (!info) { res.writeHead(404, {"Content-Type":"text/plain"}).end("Not found"); return; }
+    // Read straight through rather than stat-then-read: checking first and
+    // opening after is a time-of-check/time-of-use race (CodeQL js/file-system-race).
+    let body;
+    try {
+      body = await readFile(file);
+    } catch (err) {
+      if (err.code === "EISDIR") {
+        file = join(file, "index.html");
+        body = await readFile(file).catch(() => null);
+      } else if (err.code === "ENOENT" || err.code === "ENOTDIR") {
+        body = null;
+      } else throw err;
+    }
+    if (body === null || body === undefined) {
+      res.writeHead(404, {"Content-Type":"text/plain"}).end("Not found");
+      return;
+    }
 
-    const body = await readFile(file);
     res.writeHead(200, {
       "Content-Type": TYPES[extname(file).toLowerCase()] || "application/octet-stream",
       "Content-Length": body.length,
