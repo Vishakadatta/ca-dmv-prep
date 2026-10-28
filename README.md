@@ -10,7 +10,7 @@ Built for people who are confident drivers elsewhere but new to California road 
 
 ## What's in it
 
-- **164 questions** across 11 topics, grounded in the official
+- **177 questions** across 11 topics, grounded in the official
   [California Driver's Handbook (DL 600)](https://www.dmv.ca.gov/portal/handbook/california-driver-handbook/).
 - **12 animated SVG road diagrams** — four-way stops, unprotected left turns, which lane to
   land in, roundabouts, hill parking, school buses, freeway merging, the three-second rule.
@@ -36,10 +36,11 @@ To run your own copy:
 It's a static site with no build step and no dependencies:
 
 ```bash
-python3 -m http.server 8000
+npm run serve
 ```
 
-Then open <http://localhost:8000>.
+Then open <http://localhost:8000>. (That runs `node scripts/serve.mjs` — no dependencies,
+and unlike `python3 -m http.server` it stays reliable under parallel test workers.)
 
 ## Keyboard shortcuts
 

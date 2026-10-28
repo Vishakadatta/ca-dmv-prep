@@ -524,6 +524,47 @@ add("safe","The safest hand position on the steering wheel is:",["9 and 3 o'cloc
 add("signs","An octagonal (eight-sided) shape always means:",["Stop","Yield","Railroad crossing","No passing"],0,
 "Shape carries meaning even when the sign is dirty, faded, or snow-covered: <b>octagon = stop, triangle = yield, diamond = warning, pennant = no passing, round = railroad ahead</b>.",{sign:"stop"});
 
+/* ============ COVERAGE: rules confirmed against the DL 600 handbook ============ */
+
+add("speed","Unless otherwise posted, the maximum speed limit on a two-lane undivided highway is:",["55 mph","65 mph","45 mph","60 mph"],0,
+"<b>55 mph</b> on a two-lane undivided highway — a road with no more than one through lane each way and no divider. The 65 mph figure applies to most other highways. Towing a trailer also caps you at 55 mph.");
+
+add("turns","While waiting in an intersection to make a left turn, you should keep your wheels:",["Pointed straight ahead","Turned to the left, ready to go","Turned slightly right","It makes no difference"],0,
+"Keep the wheels <b>straight</b>. If someone hits you from behind with your wheels already turned left, you are pushed straight into oncoming traffic. Turn the wheel only once you actually begin the turn.");
+
+add("turns","A left turn against a red light is legal in California:",["Only from a one-way street onto another one-way street, after stopping","Never under any circumstances","At any intersection after a full stop","Only between 9 p.m. and 6 a.m."],0,
+"<b>One-way onto one-way only</b>, after a complete stop and only if no sign prohibits it. Any other left on red is illegal. You also may never turn right on a <b>red arrow</b>.");
+
+add("turns","Making a left turn from a one-way street onto another one-way street, you should begin the turn from:",["The far-left lane","The lane closest to the center line","Any lane that is clear","The far-right lane"],0,
+"From a one-way, start in the <b>far-left lane</b>. (Turning left from a two-way street, you start in the lane nearest the center line instead.) Where the street you enter has three or more lanes your way, you may finish in any open lane.");
+
+add("turns","Two sets of solid white lines separating your lane from a carpool lane mean:",["Never change lanes across them — wait for a broken white line","You may cross with care when the lane is empty","The carpool lane has ended","You must exit at the next ramp"],0,
+"<b>Double solid white</b> separates regular lanes from preferential lanes like carpool lanes, and crossing it is a violation. Enter and leave only where the line becomes broken.");
+
+add("turns","You may never use which of these to turn your vehicle around?",["A fire station driveway","A residential driveway","A parking lot entrance","A signalled intersection"],0,
+"Never turn around using a <b>fire station driveway</b> — blocking it even briefly can delay an emergency response. A private residential driveway is legal, though you must yield to all traffic and pedestrians when backing out.");
+
+add("turns","You are driving slowly on a two-lane road and five or more vehicles have lined up behind you. The law requires you to:",["Pull into a turnout or off the road to let them pass","Maintain your speed since you are within the limit","Speed up to the posted limit","Signal them to pass you"],0,
+"California requires you to use a <b>turnout or pull off the road</b> when five or more vehicles are following and passing is unsafe. Holding up a queue is itself a violation.");
+
+add("turns","You may not pass another vehicle within 100 feet of:",["An intersection, bridge, tunnel, or railroad crossing","A bus stop","A residential driveway","A parked car"],0,
+"No passing within <b>100 feet</b> of an intersection, bridge, tunnel, railroad crossing, or other hazard — these are exactly the places where something can appear with no warning.");
+
+add("turns","Before you start to pass on a two-lane road, any oncoming hill or curve must be at least:",["One-third of a mile away","100 feet away","Two car lengths away","One mile away"],0,
+"Give yourself <b>a third of a mile</b> of clear sight. You cannot judge the speed of a car that is still hidden, and a pass takes far more road than most drivers expect.");
+
+add("share","A raised area in the roadway marked for pedestrians waiting for a bus or streetcar is a safety zone. You must:",["Never drive through it, and pass a stopped bus there at no more than 10 mph","Drive through it only when no one is waiting","Stop completely before passing it","Sound your horn before passing"],0,
+"<b>Never drive through a safety zone</b>, under any condition. Where a bus or streetcar is stopped at one, you may pass at a maximum of <b>10 mph</b>.");
+
+add("share","You may drive across a bus-only lane:",["To make a right turn","Whenever the lane is empty","To pass slower traffic","Never, for any reason"],0,
+"A bus lane may be <b>crossed to make a right turn</b>. Driving along it to get ahead of traffic is a violation.");
+
+add("freeway","When merging onto a freeway, the gap in traffic you need is roughly:",["300 feet — about a full block","50 feet — about three car lengths","150 feet — about half a block","1,000 feet"],0,
+"Allow about <b>300 feet (a full block) on a highway</b>, and about 150 feet (half a block) on city streets. Merge at the speed of traffic and leave at least three seconds of following distance.");
+
+add("law","The DMV may require a driver to be reexamined because of:",["A physical or mental condition or a poor driving record — never age alone","Reaching the age of 70","Owning more than one vehicle","Holding an out-of-state license"],0,
+"Age by itself is never grounds for reexamination, and <b>there are no senior-specific license restrictions</b> — restrictions are based on conditions, not age. A physician, officer, or family member can request a reexamination.");
+
 window.TOPICS = TOPICS;
 window.QUESTIONS = Q;
 })();

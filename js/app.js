@@ -307,7 +307,9 @@ function renderSigns(){
 }
 
 /* ---------- who's studying ---------- */
-const initials = n => (n||"?").trim().charAt(0).toUpperCase() || "?";
+// Escaped at the source: this goes straight into innerHTML, and a future
+// change to return more than one character would otherwise be injectable.
+const initials = n => esc((n||"?").trim().charAt(0).toUpperCase() || "?");
 
 function renderWho(){
   const chip = $("#chip-who");
